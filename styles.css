@@ -1,3 +1,43 @@
-.test {
+body {
+    background-color: yellow;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.left {
+    background-color: red;
+}
+
+.form {
+    background-color: orange;
+}
+
+h1 {
     background-color: blanchedalmond;
+}
+
+.form {
+    display: none;
+}
+
+.right {
+    background-color: green;
+}
+
+.content {
+    background-color: yellowgreen;
+    padding: 10px;
+}
+
+.newcard {
+    background-color: beige;
+    margin-bottom: 10px;
+}
+
+.newercard {
+    background-color: lightskyblue;
+    margin-bottom: 10px;
 }
