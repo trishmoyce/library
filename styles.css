@@ -32,12 +32,7 @@ h1 {
     padding: 10px;
 }
 
-.newcard {
+.content > div {
     background-color: beige;
-    margin-bottom: 10px;
-}
-
-.newercard {
-    background-color: lightskyblue;
     margin-bottom: 10px;
 }

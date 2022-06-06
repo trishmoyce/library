@@ -12,8 +12,7 @@ function Book(Title, Author, Pages, Status) {
 }
 
 // EXAMPLES OF BOOKS AND THEIR DATA IN VARIABLES
-  
-const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", "295", "unread")
+
 const billy = new Book("Billy and the Cloneasaurus", "Seymour Skinner", "420", "read")
 
 // FUNCTION TO ADD BOOKS TO THE ARRAY
@@ -22,7 +21,6 @@ function addBookToLibrary(newBook) {
     myLibrary.push(newBook);
 }
 
-addBookToLibrary(theHobbit);
 addBookToLibrary(billy);
 console.log(myLibrary);
 
@@ -32,13 +30,21 @@ var content = document.querySelector(".content");
 
 function displayArray(anArray) {
     function createCard(anObject) {
+        // creates card div
         var newcard = document.createElement("div");
-        newcard.classList.add("newcard")
+        newcard.setAttribute("id", 0);
         content.appendChild(newcard);
+        // creates remove button
         const removebtn = document.createElement("button");
         removebtn.classList.add("removebtn")
         removebtn.textContent = "Remove";
-        content.appendChild(removebtn);
+        newcard.appendChild(removebtn);
+        // creates status change button
+        const readtoggle = document.createElement("button");
+        readtoggle.classList.add("readtoggle")
+        readtoggle.textContent= "Switch Read Status";
+        // creates divs for each row of data
+        newcard.appendChild(readtoggle);
             for (const key in anObject) {
                 var newdiv = document.createElement("div");
                 newdiv.textContent += `${key}: ${anObject[key]}`;
@@ -103,13 +109,26 @@ submitbtn.addEventListener('click', submitForm);
 // ADDS A NEW BOOK IN A NEW DIV (FUNCTION TO BE INSERTED IN FUNCTION ABOVE)
 
 function addNewestBook(anewobj) {
+    // creates card div
     var newercard = document.createElement("div");
-    newercard.classList.add("newercard")
     content.appendChild(newercard);
+    // assigns id for each new div added
+    let indexid = 0;
+        for (let i = 0; i < myLibrary.length; i++) {
+        indexid = i;
+    }
+    newercard.setAttribute("id", indexid);
+    // creates remove button
     const removebtn = document.createElement("button");
-    removebtn.textContent = "Remove";
     removebtn.classList.add("removebtn")
-    content.appendChild(removebtn);
+    removebtn.textContent = "Remove";
+    newercard.appendChild(removebtn);
+    // creates status change button
+    const readtoggle = document.createElement("button");
+    readtoggle.classList.add("readtoggle")
+    readtoggle.textContent= "Switch Read Status";
+    newercard.appendChild(readtoggle);
+    // creates divs for each row of data
     for (const key in anewobj) {
         var newerdiv = document.createElement("div");
         newerdiv.textContent += `${key}: ${anewobj[key]}`;
@@ -117,17 +136,62 @@ function addNewestBook(anewobj) {
     }
 };
 
-// PUTS LISTENER EVENTS ON ALL "REMOVE" BUTTONS
+/* PUTS LISTENER EVENTS ON ALL "REMOVE" BUTTONS
 
-const remove = document.getElementsByClassName("removebtn");
+const contentContainer = document.querySelector(".content");
 
-function removeBook() {
-    alert("removed");
+function removeCard(e) {
+    if (e.target.classList.contains("removebtn")) {
+//        const cardToRemove = document.querySelector(".newercard");
+//        cardToRemove.remove();
+        alert("removed");
+    }
+};
+
+contentContainer.addEventListener("click", removeCard);
+
+//function removeCard(e) {
+//    if (document.getElementById("0").contains(e.target)) {
+//        alert("removed");
+//    }
+//};
+
+function removeCard(e) {
+    const zero = document.getElementById("0");
+        if (document.getElementById("0").contains(e.target)) {
+        zero.remove();
+        }
+    };
+
+//    alert(e.target.parentElement.id);
+
+    */
+
+const contentContainer = document.querySelector(".content");
+
+function removeCard(e) {
+var mydivs = document.querySelector(".content").children;
+    for (var i = 0; i < mydivs.length; i++) {
+        if (mydivs[i].contains(e.target)) {
+            mydivs[i].remove();
+            removeFromArray = myLibrary.splice(e.target.parentElement.id, i);
+        }
+    }
 }
 
-for (el of remove) {
-    el.addEventListener("click", removeBook);
+contentContainer.addEventListener("click", removeCard);
+
+// PUTS LISTENER EVENTS ON ALL "READ" BUTTONS
+
+function toggleRead(e) {
+    if (e.target.classList.contains("readtoggle")) {
+//        const cardToRemove = document.querySelector(".newercard");
+//        cardToRemove.remove();
+        alert("read");
+    }
 };
+
+contentContainer.addEventListener("click", toggleRead);
 
 /*
 
@@ -136,18 +200,22 @@ for (el of remove) {
 const index = myLibrary.findIndex(library => library.Title === "Billy and the Cloneasaurus");
 console.log(index);
 
-//  SETS A VALUE ATTRIBUTE TO A DIV
+const fibSequence = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610]
 
-function addAttribute() {
-    document.querySelector(".showbtn").setAttribute("value", "test");
+function findFibNum(indexNum) {
+  for (let i = 0; i = indexNum; i++) {
+    return fibSequence[i];
+  }
 }
 
-// UPDATES A VARIABLE
-
-var phrase = "phrase";
-
-for (let i = 1; i < 5; i++) {
-    console.log(phrase += i);
-}
+findFibNum(4);
+// returns 3
+findFibNum(6);
+// returns 8
 
 */
+
+// set the div's value to the index number of the object it contains
+// when the button is pressed, it targets the value and removes the div
+
+// add a cheeky note if someone tries to remove the first book: it's free and cannot be removed from the library
