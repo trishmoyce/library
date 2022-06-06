@@ -167,10 +167,11 @@ function removeCard(e) {
 
     */
 
-const contentContainer = document.querySelector(".content");
+const contentContainer = document.querySelector(".content")
 
 function removeCard(e) {
 var mydivs = document.querySelector(".content").children;
+if (e.target.classList == "removebtn") {
     for (var i = 0; i < mydivs.length; i++) {
         if (mydivs[i].contains(e.target)) {
             mydivs[i].remove();
@@ -178,17 +179,22 @@ var mydivs = document.querySelector(".content").children;
         }
     }
 }
+}
 
 contentContainer.addEventListener("click", removeCard);
 
 // PUTS LISTENER EVENTS ON ALL "READ" BUTTONS
 
 function toggleRead(e) {
-    if (e.target.classList.contains("readtoggle")) {
-//        const cardToRemove = document.querySelector(".newercard");
-//        cardToRemove.remove();
-        alert("read");
+    if (e.target.classList == "readtoggle") {
+//    if (e.target.classList.contains("readtoggle")) {
+        if (billy.Status == "read") {
+            alert("hey");
+        }
     }
+//        const cardToRemove = document.querySelector(".newercard");
+//        alert(billy.Status);
+//    }
 };
 
 contentContainer.addEventListener("click", toggleRead);
