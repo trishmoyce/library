@@ -1,4 +1,4 @@
-// A VARAIBLE THAT WILL STORE OUR ARRAY
+// A VARIABLE THAT WILL STORE OUR ARRAY
 
 let myLibrary = [];
 
@@ -136,46 +136,18 @@ function addNewestBook(anewobj) {
     }
 };
 
-/* PUTS LISTENER EVENTS ON ALL "REMOVE" BUTTONS
-
-const contentContainer = document.querySelector(".content");
-
-function removeCard(e) {
-    if (e.target.classList.contains("removebtn")) {
-//        const cardToRemove = document.querySelector(".newercard");
-//        cardToRemove.remove();
-        alert("removed");
-    }
-};
-
-contentContainer.addEventListener("click", removeCard);
-
-//function removeCard(e) {
-//    if (document.getElementById("0").contains(e.target)) {
-//        alert("removed");
-//    }
-//};
-
-function removeCard(e) {
-    const zero = document.getElementById("0");
-        if (document.getElementById("0").contains(e.target)) {
-        zero.remove();
-        }
-    };
-
-//    alert(e.target.parentElement.id);
-
-    */
-
 const contentContainer = document.querySelector(".content")
 
 function removeCard(e) {
 var mydivs = document.querySelector(".content").children;
 if (e.target.classList == "removebtn") {
     for (var i = 0; i < mydivs.length; i++) {
-        if (mydivs[i].contains(e.target)) {
+        if (e.target.parentElement.id == "0") {
+            alert("This masterpiece is free to own and cannot be removed from your library. Enjoy! :)");
+            { break; }
+        } else if (mydivs[i].contains(e.target) && e.target.parentElement.id != 0) {
             mydivs[i].remove();
-            removeFromArray = myLibrary.splice(e.target.parentElement.id, i);
+            removeFromArray = myLibrary.splice(e.target.parentElement.id, 1);
         }
     }
 }
@@ -186,42 +158,15 @@ contentContainer.addEventListener("click", removeCard);
 // PUTS LISTENER EVENTS ON ALL "READ" BUTTONS
 
 function toggleRead(e) {
-    if (e.target.classList == "readtoggle") {
-//    if (e.target.classList.contains("readtoggle")) {
-        if (billy.Status == "read") {
-            alert("hey");
-        }
+    if (e.target.classList == "readtoggle" && billy.Status == "read") {
+        billy.Status = "unread";
+        console.log(billy);
+    } else if (e.target.classList == "readtoggle" && billy.Status == "unread") {
+        billy.Status = "read";
+        console.log(billy);
     }
-//        const cardToRemove = document.querySelector(".newercard");
-//        alert(billy.Status);
-//    }
 };
 
 contentContainer.addEventListener("click", toggleRead);
-
-/*
-
-// FINDS THE INDEX # OF A BOOK
-
-const index = myLibrary.findIndex(library => library.Title === "Billy and the Cloneasaurus");
-console.log(index);
-
-const fibSequence = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610]
-
-function findFibNum(indexNum) {
-  for (let i = 0; i = indexNum; i++) {
-    return fibSequence[i];
-  }
-}
-
-findFibNum(4);
-// returns 3
-findFibNum(6);
-// returns 8
-
-*/
-
-// set the div's value to the index number of the object it contains
-// when the button is pressed, it targets the value and removes the div
 
 // add a cheeky note if someone tries to remove the first book: it's free and cannot be removed from the library
