@@ -22,7 +22,7 @@ function addBookToLibrary(newBook) {
 }
 
 addBookToLibrary(billy);
-console.log(myLibrary);
+//console.log(myLibrary);
 
 // FUNCTION ITERATES THROUGH AN ARRAY OF OBJECTS AND DISPLAYS OBJECT DATA IN GENERATED DIVS
 
@@ -136,6 +136,8 @@ function addNewestBook(anewobj) {
     }
 };
 
+// REMOVES A BOOK FROM THE ARRAY AND ITS CORRESPONDING CARD FROM THE DOM
+
 const contentContainer = document.querySelector(".content")
 
 function removeCard(e) {
@@ -147,7 +149,7 @@ if (e.target.classList == "removebtn") {
             { break; }
         } else if (mydivs[i].contains(e.target) && e.target.parentElement.id != 0) {
             mydivs[i].remove();
-            removeFromArray = myLibrary.splice(e.target.parentElement.id, 1);
+            var removeFromArray = myLibrary.splice(e.target.parentElement.id, 1);
         }
     }
 }
@@ -155,18 +157,25 @@ if (e.target.classList == "removebtn") {
 
 contentContainer.addEventListener("click", removeCard);
 
-// PUTS LISTENER EVENTS ON ALL "READ" BUTTONS
+// TOGGLES THE READ STATUS TO READ/UNREAD
 
 function toggleRead(e) {
-    if (e.target.classList == "readtoggle" && billy.Status == "read") {
-        billy.Status = "unread";
-        console.log(billy);
-    } else if (e.target.classList == "readtoggle" && billy.Status == "unread") {
-        billy.Status = "read";
-        console.log(billy);
+var mydivs = document.querySelector(".content").children;
+    if (e.target.classList == "readtoggle") {
+        for (var i = 0; i < mydivs.length; i++) {
+            if (mydivs[i].contains(e.target)) {
+                var divindexno = e.target.parentElement.id;
+                var lastchild = e.target.parentElement.lastElementChild;
+                if (myLibrary[divindexno].Status == "read") {
+                    myLibrary[divindexno].Status = "unread";
+                    lastchild.textContent = `Status: ${myLibrary[divindexno].Status}`;
+                } else if (myLibrary[divindexno].Status == "unread") {
+                    myLibrary[divindexno].Status = "read";
+                    lastchild.textContent = `Status: ${myLibrary[divindexno].Status}`;
+                }
+            }
+        }
     }
-};
+}
 
 contentContainer.addEventListener("click", toggleRead);
-
-// add a cheeky note if someone tries to remove the first book: it's free and cannot be removed from the library
