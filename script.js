@@ -157,25 +157,51 @@ if (e.target.classList == "removebtn") {
 
 contentContainer.addEventListener("click", removeCard);
 
-// TOGGLES THE READ STATUS TO READ/UNREAD
+/* TOGGLES THE READ STATUS TO READ/UNREAD
 
 function toggleRead(e) {
 var mydivs = document.querySelector(".content").children;
     if (e.target.classList == "readtoggle") {
         for (var i = 0; i < mydivs.length; i++) {
             if (mydivs[i].contains(e.target)) {
+//                console.log(mydivs[i]);
                 var divindexno = e.target.parentElement.id;
                 var lastchild = e.target.parentElement.lastElementChild;
                 if (myLibrary[divindexno].Status == "read") {
                     myLibrary[divindexno].Status = "unread";
-                    lastchild.textContent = "Status: ${myLibrary[divindexno].Status}`;
+                    lastchild.textContent = `Status: ${myLibrary[divindexno].Status}`;
+                    console.log(myLibrary[divindexno]);
                 } else if (myLibrary[divindexno].Status == "unread") {
                     myLibrary[divindexno].Status = "read";
                     lastchild.textContent = `Status: ${myLibrary[divindexno].Status}`;
+                    console.log(myLibrary[divindexno]);
                 }
             }
         }
     }
 }
 
+contentContainer.addEventListener("click", toggleRead);
+
+*/
+
+function toggleRead(e) {
+var lastchild = e.target.parentElement.lastElementChild;
+var divindexno = e.target.parentElement.id;
+console.log(divindexno);
+    if (e.target.classList == "readtoggle") {
+        if (myLibrary[divindexno].Status == "read") {
+            myLibrary[divindexno].Status = "unread";
+            lastchild.textContent = `Status: ${myLibrary[divindexno].Status}`;
+            console.log(myLibrary[divindexno]);
+        } else if (myLibrary[divindexno].Status == "unread") {
+            myLibrary[divindexno].Status = "read";
+            lastchild.textContent = `Status: ${myLibrary[divindexno].Status}`;
+            console.log(myLibrary[divindexno]);
+        }
+    }
+}
+
+// myLibrary[divindexno].Status is calling the object based on the index number, but the index number changes when the item is moved from the array
+    
 contentContainer.addEventListener("click", toggleRead);
