@@ -1,38 +1,142 @@
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&family=Joan&display=swap");
+
 body {
-    background-color: yellow;
+    background-color: #4A5952;
+    margin: auto;
+    width: 85%;
 }
 
 .container {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 35% 65%;
+    height: 100vh;
 }
 
 .left {
-    background-color: red;
+    background-color: #B5C8A2;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
-.form {
-    background-color: orange;
-}
-
-h1 {
-    background-color: blanchedalmond;
-}
-
-.form {
-    display: none;
-}
-
-.right {
-    background-color: green;
-}
-
-.content {
-    background-color: yellowgreen;
+.header {
+    font-family: "Great Vibes", cursive;
+    font-size: 60px;
     padding: 10px;
 }
 
+.showbtn {
+    background-color: #DD6C5F;
+    border: none;
+    color: white;
+    font-family: "Joan", serif;
+    font-size: 20px;
+    padding: 10px 25px;
+    text-align: center;
+    transition-duration: 0.5s;
+}
+
+.showbtn:hover {
+    background-color: #F2A477;
+    color: white;
+}
+
+.form {
+    background-color: #F2E2BE;
+    box-shadow: 5px 5px 5px 1px rgba(94.9,64.3,46.7,0.70);
+    display: none;
+    font-family: "Joan", serif;
+    font-size: 15px;
+    padding: 15px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px;
+}
+
+input {
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+
+input:focus {
+    background-color: #F2A477;
+    outline: none;
+}
+
+fieldset {
+    width: 200px;
+    border: 1px solid black;
+}
+
+.form > button {
+    background-color: #DD6C5F;
+    border: none;
+    color: white;
+    font-family: "Joan", serif;
+    font-size: 16px;
+    margin-right: 5px;
+    padding: 10px 28px;
+    text-align: center;
+    transition-duration: 0.5s;
+}
+
+.form > button:hover {
+    background-color: #F2A477;
+    color: white;
+}
+
+.right {
+    background-color: #F2A477;
+    font-family: "Joan", serif;
+}
+
+.content {
+    background-color: #F2A477;
+    margin-bottom: 20px;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin-top: 20px;
+}
+
 .content > div {
-    background-color: beige;
-    margin-bottom: 10px;
+    background-color: #F2E2BE;
+    box-shadow: 5px 5px 5px 1px rgba(94.9,64.3,46.7,0.70);
+    font-size: 18px;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.removebtn {
+    background-color: #DD6C5F;
+    border: none;
+    color: white;
+    font-family: "Joan", serif;
+    font-size: 16px;
+    padding: 10px 20px;
+    text-align: center;
+    transition-duration: 0.5s;
+}
+
+.removebtn:hover {
+    background-color: #F2A477;
+    color: white;
+}
+
+.readtoggle {
+    background-color: #DD6C5F;
+    border: none;
+    color: white;
+    font-family: "Joan", serif;
+    font-size: 16px;
+    margin-left: 5px;
+    padding: 10px 20px;
+    text-align: center;
+    transition-duration: 0.5s;
+}
+
+.readtoggle:hover {
+    background-color: #F2A477;
+    color: white;
 }

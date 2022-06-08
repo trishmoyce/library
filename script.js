@@ -168,7 +168,7 @@ var mydivs = document.querySelector(".content").children;
                 var lastchild = e.target.parentElement.lastElementChild;
                 if (myLibrary[divindexno].Status == "read") {
                     myLibrary[divindexno].Status = "unread";
-                    lastchild.textContent = `Status: ${myLibrary[divindexno].Status}`;
+                    lastchild.textContent = "Status: ${myLibrary[divindexno].Status}`;
                 } else if (myLibrary[divindexno].Status == "unread") {
                     myLibrary[divindexno].Status = "read";
                     lastchild.textContent = `Status: ${myLibrary[divindexno].Status}`;
