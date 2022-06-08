@@ -13,7 +13,7 @@ function Book(Title, Author, Pages, Status) {
 
 // EXAMPLES OF BOOKS AND THEIR DATA IN VARIABLES
 
-const billy = new Book("Billy and the Cloneasaurus", "Seymour Skinner", "420", "read")
+const billy = new Book("Billy and the Cloneasaurus", "Seymour Skinner", "420", "unread")
 
 // FUNCTION TO ADD BOOKS TO THE ARRAY
 
@@ -157,51 +157,26 @@ if (e.target.classList == "removebtn") {
 
 contentContainer.addEventListener("click", removeCard);
 
-/* TOGGLES THE READ STATUS TO READ/UNREAD
+// TOGGLES THE READ STATUS TO READ/UNREAD
 
 function toggleRead(e) {
 var mydivs = document.querySelector(".content").children;
     if (e.target.classList == "readtoggle") {
         for (var i = 0; i < mydivs.length; i++) {
+            var lastchild = e.target.parentElement.lastElementChild;
+            let indexno;
             if (mydivs[i].contains(e.target)) {
-//                console.log(mydivs[i]);
-                var divindexno = e.target.parentElement.id;
-                var lastchild = e.target.parentElement.lastElementChild;
-                if (myLibrary[divindexno].Status == "read") {
-                    myLibrary[divindexno].Status = "unread";
-                    lastchild.textContent = `Status: ${myLibrary[divindexno].Status}`;
-                    console.log(myLibrary[divindexno]);
-                } else if (myLibrary[divindexno].Status == "unread") {
-                    myLibrary[divindexno].Status = "read";
-                    lastchild.textContent = `Status: ${myLibrary[divindexno].Status}`;
-                    console.log(myLibrary[divindexno]);
+            indexno = i;
+                if (myLibrary[indexno].Status == "read") {
+                    myLibrary[indexno].Status = "unread";
+                    lastchild.textContent = "Status: unread"
+                } else if (myLibrary[indexno].Status == "unread") {
+                    myLibrary[indexno].Status = "read";
+                    lastchild.textContent = "Status: read"
                 }
             }
         }
     }
 }
 
-contentContainer.addEventListener("click", toggleRead);
-
-*/
-
-function toggleRead(e) {
-var lastchild = e.target.parentElement.lastElementChild;
-var divindexno = e.target.parentElement.id;
-console.log(divindexno);
-    if (e.target.classList == "readtoggle") {
-        if (myLibrary[divindexno].Status == "read") {
-            myLibrary[divindexno].Status = "unread";
-            lastchild.textContent = `Status: ${myLibrary[divindexno].Status}`;
-            console.log(myLibrary[divindexno]);
-        } else if (myLibrary[divindexno].Status == "unread") {
-            myLibrary[divindexno].Status = "read";
-            lastchild.textContent = `Status: ${myLibrary[divindexno].Status}`;
-            console.log(myLibrary[divindexno]);
-        }
-    }
-}
-
-// myLibrary[divindexno].Status is calling the object based on the index number, but the index number changes when the item is moved from the array
-    
 contentContainer.addEventListener("click", toggleRead);
