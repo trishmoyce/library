@@ -4,12 +4,14 @@ let myLibrary = [];
 
 // FUNCTION CREATING THE PROTOTYPE FOR ALL BOOKS
 
-function Book(Title, Author, Pages, Status) {
+class Book {
+    constructor(Title, Author, Pages, Status) {
     this.Title = Title
     this.Author = Author
     this.Pages = Pages
     this.Status = Status
-}
+    }
+};
 
 // EXAMPLES OF BOOKS AND THEIR DATA IN VARIABLES
 
